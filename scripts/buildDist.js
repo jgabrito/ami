@@ -1,4 +1,5 @@
 const fs = require('fs');
+const shelljs = require('shelljs');
 
 var copy = (srcDir, dstDir) => {
     var results = [];
@@ -39,6 +40,6 @@ var copy = (srcDir, dstDir) => {
     return results;
 };
 
-fs.mkdirSync('dist/examples');
+shelljs.mkdir('-p', 'dist/examples');
 copy('examples', 'dist/examples');
 fs.createReadStream('index.html').pipe(fs.createWriteStream('dist/index.html'));
